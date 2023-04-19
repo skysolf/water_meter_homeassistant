@@ -1,8 +1,8 @@
 
 esphome:
-  name: "water-flow-sensor"
-  platform: ESP8266
-  board: nodemcuv2
+  name: "water-flow-sensor" #设备名称
+  platform: ESP8266   #设备平台
+  board: nodemcuv2  #主板类型
 
 # Enable logging
 logger:
@@ -10,10 +10,10 @@ logger:
 # Enable Home Assistant API
 api:
   encryption:
-    key: "AbZDG0VKLstc+crcITmljANpV1A8jGb2wloYMUU3KvU="
+    key: "AbZDG0VKLstc+crcITmljANpV1A8jGb2wloYMUU3KvU="  #这个创建一个新的sensor会自动生成，直接用随机生成的即可。
 
 ota:
-  password: ""
+  password: ""  #ota升级密码，可以不用写
 
 wifi:
   ssid: "家里wifi名称"
@@ -21,7 +21,7 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "water flow sensor Hotspot"
+    ssid: "water flow sensor Hotspot" #永辉回调的热点wifi名称和密码，随便写
     password: "自定义密码"
 
 captive_portal:
@@ -45,7 +45,7 @@ sensor:
     unit_of_measurement: 'L/Min'
     update_interval: 5s #上报时间间隔
     filters:
-      - multiply: 0.0043  #一升水330个脉冲1/330=0.00303030303030303
+      - multiply: 0.0043  #一升水330个脉冲1/330=0.00303030303030303，厂商给的参数未必就适合你的环境，可以根据家里用水环境适当调整，和水表用量接近即可。
 
       
   - platform: total_daily_energy
